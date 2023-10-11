@@ -12,6 +12,7 @@ enum class ErrorCode(
     PASSWORD_MIS_MATCH(401, "Password Mis Match"),
 
     USER_NOT_FOUND(404, "User Not Found"),
+    POST_DETAILS_NOT_FOUND(404, "Post Details Not Found"),
 
     USER_ALREADY_EXIST(409, "User Already Exist"),
 
