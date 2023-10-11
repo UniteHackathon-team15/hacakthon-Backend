@@ -5,6 +5,7 @@ class QueryPostListResponse(
 )
 
 data class PostList(
+    val postId: Long,
     val title: String,
     val summary: String,
     val image: String

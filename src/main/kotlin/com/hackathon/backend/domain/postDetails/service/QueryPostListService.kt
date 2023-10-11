@@ -16,6 +16,7 @@ class QueryPostListService(
         return QueryPostListResponse(
             postList = postList.map {
                 PostList(
+                    postId = it.id,
                     title = it.title,
                     summary = it.summary,
                     image = it.image
