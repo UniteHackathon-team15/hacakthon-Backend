@@ -14,17 +14,17 @@ class JwtProvider (
     private val securityProperties: SecurityProperties
 ) {
 
-    fun receiveToken(userId: Long) = TokenResponse(
-        accessToken = generateAccessToken(userId),
+    fun receiveToken(accountId: String) = TokenResponse(
+        accessToken = generateAccessToken(accountId),
         accessTokenExp = LocalDateTime.now().plusSeconds(securityProperties.accessExp)
     )
 
-    private fun generateAccessToken(userId: Long) =
+    private fun generateAccessToken(accountId: String) =
         Jwts.builder()
-            .signWith(SignatureAlgorithm.HS512, securityProperties.secretKey)
-            .setHeaderParam(Header.JWT_TYPE, JwtProperties.ACCESS)
-            .setId(userId.toString())
-            .setIssuedAt(Date())
+            .signWith(SignatureAlgorithm.HS256, securityProperties.secretKey)
+            .setSubject(accountId)
+            .setHeaderParam("type", "jwt")
+            .claim("type", JwtProperties.ACCESS)
             .setExpiration(Date(System.currentTimeMillis() + securityProperties.accessExp * 1000))
             .compact()
 }

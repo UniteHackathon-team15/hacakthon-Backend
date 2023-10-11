@@ -24,6 +24,6 @@ class UserSignInService(
             throw PasswordMisMatchException
         }
 
-        return jwtProvider.receiveToken(user.id)
+        return jwtProvider.receiveToken(user.accountId)
     }
 }
