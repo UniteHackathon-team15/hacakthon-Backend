@@ -16,7 +16,7 @@ class PostEntity(
 
     var image: String,
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "user_id", nullable = false)
-    val userEntity: UserEntity
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "user_id", nullable = false)
+//    val userEntity: UserEntity
 )

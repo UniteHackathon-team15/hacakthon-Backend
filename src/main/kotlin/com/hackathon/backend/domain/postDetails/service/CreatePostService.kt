@@ -19,18 +19,12 @@ class CreatePostService(
 ) {
 
     fun execute(request: CreatePostRequest) {
-
-        val accountId = SecurityContextHolder.getContext().authentication.name
-
-        val user = userRepository.findByAccountId(accountId)
-            ?: throw UserNotFoundException
-
+        
         val post = postRepository.save(
             PostEntity(
                 title = request.title,
                 summary = request.summary,
                 image = request.image,
-                userEntity = user
             )
         )
 
